@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load crispy_forms_filters %}
+
 {% block title %}
 Login
 {% endblock %}
@@ -13,16 +15,20 @@ Login
     <form method="POST" class="form-group">
         {% csrf_token %}
         {% if error %}
+        {{ form|crispy }}
         <p style='color:red'>{{ error }}</p>
         {% endif %}
         <div>
                 <input type='text' name = 'username' placeholder = 'username'/>
         </div>
+        {{form.as_p}}
         <div>
                 <input type='password' name = 'password' placeholder = 'password'/>
         </div>
         <button type="submit" class = "btn btn-success">Login</button>
+        <p>If you are having problems logging in, click <a href="/help">here</a>!</p>
         </form>
+
 </div>
 {% endif %}
 {% endblock content %}
