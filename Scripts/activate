@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\jxs75\Documents\DTU - Payroll Applications"
+VIRTUAL_ENV="C:\Users\jxs75\Documents\Dark-Theme-Employee-Payroll"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
@@ -54,8 +54,8 @@ fi
 
 if [ -z "${VIRTUAL_ENV_DISABLE_PROMPT:-}" ] ; then
     _OLD_VIRTUAL_PS1="${PS1:-}"
-    if [ "x(DTU - Payroll Applications) " != x ] ; then
-	PS1="(DTU - Payroll Applications) ${PS1:-}"
+    if [ "x(Dark-Theme-Employee-Payroll) " != x ] ; then
+	PS1="(Dark-Theme-Employee-Payroll) ${PS1:-}"
     else
     if [ "`basename \"$VIRTUAL_ENV\"`" = "__" ] ; then
         # special case for Aspen magic directories
