@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div style ='margin-top: 30px;'>
+    <form method="POST">
+        {% csrf_token %}
+        <input type ='text' name = 'fname' placeholder= 'First Name' /><br>
+        <input type ='text' name = 'mname' placeholder= 'M' /><br>
+        <input type ='text' name = 'lname' placeholder= 'Last Name' /><br>
+        <textarea name = 'address' placeholder = 'Enter Address'></textarea><br>
+        <input type = 'date' name = 'dob' /><br>
+        <input type = 'email' name = email /><br>
+        <input type='number' name= 'id' placeholder = '00' /><br>
+        <input type = 'date' name = 'hired' /><br>
+        <input type = 'number' name = 'wage' step = '0.01' /><br>
+        <button type = 'submit'> Create Employee </button>
+    </form>
+</div>
+{% endblock content %}
