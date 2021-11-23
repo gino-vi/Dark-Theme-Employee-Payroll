@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'payrollproject.urls'
+ROOT_URLCONF = 'EmployeePayroll.urls'
 
 LOGIN_URL = '/login'
 
@@ -72,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'payrollproject.wsgi.application'
+WSGI_APPLICATION = 'EmployeePayroll.wsgi.application'
 
 
 # Database
