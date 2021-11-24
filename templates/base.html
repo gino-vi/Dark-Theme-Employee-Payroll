@@ -1,17 +1,52 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Dark Theme Employee Payroll</title>
+        <!-- Link all CSS stylesheets for base.html here...-->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/dt_base.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/dt_styles.css' %}" />
     </head>
 
     <body>
-
-        <h1>Dark Theme Users</h1>
+        <header>
+            <img src="{% static 'images/dt_logo.png' %}" alt="Dark Theme Employee Payroll" id="logoimg" /> 
+            <h1>Dark Theme Employee Payroll</h1> 
+        </header>
         
-        {% block content %}
+        <nav>
+            <ul>
+                <li><a href="/">Home Page View Link</a></li>
+                <li><a href="#"> Navigation Link Place Holder</a></li>
+                <li class="newgroup"><a href="#">Search Employee Link</a></li>
+                <li><a href="/employees/create">Add Employee Link</a></li>
+                <li class="newgroup"><a href="#">Navigation Link Place Holder</a></li>
+                <li><a href="#">Navigation Link Place Holder</a></li>
+                <li class="newgroup"><a href="#">Navigation Link Place Holder</a></li>
+                <li><a href="#">Navigation Link Place Holder</a></li>
+            </ul>
+        </nav>
 
-        {% endblock content %}
+        <section>
+            {% block content %}
+
+            {% endblock content %}
+        </section>
+        
+        <aside>
+            <dt>Viewing Employee ID # ... </dt>
+            <dd>Last Name, First Name, etc...</dd>
+    
+            <dt>Logged in user: ...</dt>
+            <dd>Username (Last Name, First Name, etc...)</dd>
+        </aside>
+
     </body>
 
+    <footer>
+        Dark Theme Employee Payroll 
+    </footer>
 
 </html>

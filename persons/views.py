@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def add_employee_view(request):
     context = {}
-
+    
     if request.method == "POST":
         emp_fname = request.POST.get("fname")
         emp_mname = request.POST.get("mname")
