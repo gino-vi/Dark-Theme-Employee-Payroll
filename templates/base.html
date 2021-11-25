@@ -8,6 +8,8 @@
         <!-- Link all CSS stylesheets for base.html here...-->
         <link rel="stylesheet" type="text/css" href="{% static 'css/dt_base.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'css/dt_styles.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/dt_forms.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/dt_validate.css' %}" />
     </head>
 
     <body>
@@ -18,10 +20,10 @@
         
         <nav>
             <ul>
-                <li><a href="/">Home Page View Link</a></li>
-                <li><a href="#"> Navigation Link Place Holder</a></li>
-                <li class="newgroup"><a href="#">Search Employee Link</a></li>
-                <li><a href="/employees/create">Add Employee Link</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="employees/">Search Employee</a></li>
+                <li class="newgroup"><a href="employees/create">Add Employee</a></li>
+                <li><a href="#">Edit Employee</a></li>
                 <li class="newgroup"><a href="#">Navigation Link Place Holder</a></li>
                 <li><a href="#">Navigation Link Place Holder</a></li>
                 <li class="newgroup"><a href="#">Navigation Link Place Holder</a></li>
@@ -30,6 +32,8 @@
         </nav>
 
         <section>
+            <h1>Dark Theme Employee Payroll</h1>
+            <p></p>
             {% block content %}
 
             {% endblock content %}

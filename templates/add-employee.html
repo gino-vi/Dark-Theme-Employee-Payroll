@@ -3,19 +3,39 @@
 
 {% block content %}
 
-<div style ='margin-top: 30px;'>
-    <form method="POST">
-        {% csrf_token %}
-        <input type ='text' name = 'fname' placeholder= 'First Name' /><br>
-        <input type ='text' name = 'mname' placeholder= 'M' /><br>
-        <input type ='text' name = 'lname' placeholder= 'Last Name' /><br>
-        <textarea name = 'address' placeholder = 'Enter Address'></textarea><br>
-        <input type = 'date' name = 'dob' /><br>
-        <input type = 'email' name = email /><br>
-        <input type='number' name= 'id' placeholder = '00' /><br>
-        <input type = 'date' name = 'hired' /><br>
-        <input type = 'number' name = 'wage' step = '0.01' /><br>
-        <button type = 'submit'> Create Employee </button>
-    </form>
-</div>
+<form id="addEmployeeForm" method="POST">
+    {% csrf_token %}
+    <label for="fnameBox">First Name*</label>
+    <input name="fname" id="fnameBox" type="text"  placeholder="First Name" required />
+    
+    <label for="mnameBox">Middle Initial</label>
+    <input name="mname" id="mnameBox" type="text"  placeholder='M' />
+    
+    <label for="lnameBox">Last Name*</label>
+    <input name="lname" id="lnameBox" type="text" placeholder="Last Name" required />
+    
+    <label for="dobBox">Date Of Birth*</label>
+    <input name="dob" id="dobBox" type="date" required />
+
+    <label for="addBox">Address*</label>
+    <textarea name="address" id="addBox" placeholder="Enter Address" required ></textarea>
+    
+    <label for="emailBox">Email</label>
+    <input name="email" id="emailBox" type ="email" />
+    
+    <label for="idBox">ID Number*</label>
+    <input name="id" id="idBox" type='number' placeholder="00" required />
+    
+    <label for="hiredBox">Hire Date*</label>
+    <input name="hired" id="hiredBox" type="date" required />
+    
+    <label for="wageBox">Wage*</label>
+    <input name="wage" id="wageBox" type="number" step="0.01" required />
+
+    <p>
+     <input type="submit" value="Create Employee" />
+    </p>
+    
+</form>
+
 {% endblock content %}

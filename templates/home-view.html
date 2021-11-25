@@ -1,7 +1,27 @@
 {% extends "base.html" %}
 
+{% block title %}
+Login
+{% endblock %}
 
 {% block content %}
-    <h1>Place Holder for Forms/Views</h1>
-    <p>(Add, Edit, Search, Process, etc....)</p>
+
+{% if user.is_authenticated %}
+
+<p>You are already logged in. Would you like to <a href='/logout'>Logout</a>.</p>
+
+{% else %}
+
+<p>You are not logged in. Please <a href='/login'>Login</a>.</p>
+
+{% endif %}
+
+<p>
+    Software that allows Admins to keep track of employee attendance and payroll. 
+    The Admin creates employee profiles for each employee by entering relevant personal 
+    information (name, job position, qualification, etc.). They can search for an employee, 
+    add employee, edit employee details, set status as active/inactive, check the salary 
+    details and breakdown of the salary of each employee by entering the employee ID and date.
+</p>
+
 {% endblock content %}
