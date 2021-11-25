@@ -28,3 +28,7 @@ def register_view(request):
     context = {}
 
     return render(request, "accounts/register.html", context=context)
+
+def help_view(request):
+
+    return render(request, "help.html")
