@@ -4,12 +4,13 @@ from django import template
 from django.http import HttpResponse
 from .models import Employee
 from django.contrib.auth.decorators import login_required
-# Create your views here.
 
+# Create your views here.
+# **************************************************************************
 @login_required
 def add_employee_view(request):
     context = {}
-
+    
     if request.method == "POST":
         emp_fname = request.POST.get("fname")
         emp_mname = request.POST.get("mname")
@@ -31,9 +32,32 @@ def add_employee_view(request):
     HTML_STRING = render(request, "add-employee.html", context=context)
 
     return HttpResponse(HTML_STRING)
-    
+
+# **************************************************************************   
 @login_required
 def edit_employee_view(request):
 
-    return HttpResponse("add-employee.html")
+    return HttpResponse("edit-employee.html")
+
+# **************************************************************************
+@login_required
+def search_employee_view(request):
+    query_dict = request.GET 
+
+    try:
+        id_number = int(query_dict.get("id"))
+    except:
+        id_number = None
+
+    employee_obj = None
+
+    if id_number is not None:
+        employee_obj = Employee.objects.get(id=id_number)
+    
+    context = {
+        "object": employee_obj
+    }
+    return render(request, "search-employee.html", context=context)
+
+    # **************************************************************************
 

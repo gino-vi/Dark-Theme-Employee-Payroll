@@ -1,5 +1,5 @@
 """
-WSGI config for payrollproject project.
+WSGI config for EmployeePayroll project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

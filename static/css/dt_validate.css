@@ -1,0 +1,30 @@
+/* 
+    Validation Style Sheet
+    Validation Styles 
+*/
+
+input:focus, select:focus, textarea:focus {
+    background-color: rgb(245,245,140);
+}
+
+input#fnameBox:focus:valid,
+input#lnameBox:focus:valid,
+input#dobBox:focus:valid,
+input#emailBox:focus:valid,
+input#addBox:focus:valid,
+input#hiredBox:focus:valid,
+input#wageBox:focus:valid,
+input#idBox:focus:valid {
+    background: rgb(220,255,220) url("images/dt_valid.png") right/contain no-repeat;
+}
+
+input#fnameBox:focus:invalid,
+input#lnameBox:focus:invalid,
+input#dobBox:focus:invalid,
+input#emailBox:focus:invalid,
+input#addBox:focus:invalid,
+input#hiredBox:focus:invalid,
+input#wageBox:focus:invalid,
+input#idBox:focus:invalid {
+    background: rgb(255,232,232) url("images/dt_invalid.png") right/contain no-repeat;
+}
