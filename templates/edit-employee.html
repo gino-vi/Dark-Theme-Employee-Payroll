@@ -5,4 +5,32 @@
 <h1>Update Employee</h1>
 <p></p>
 
+<form method="POST" id="updateEmployeeForm">
+    {% csrf_token %}
+    <label for="employeeBox">Employee<span style="color:red">*</span></label>
+    <select name="employeeBox" required>
+        <option>Select an Employee</option>
+    {% for emp in employees %}
+        <option value="{{ emp.id_number }}">{{ emp.first_name }} {{emp.last_name}}</option>
+    {% endfor %}
+    </select>
+    <br/>
+    <br/>
+    <br/>
+    <!-- 
+    <label for="fnameBox">First Name*<span style="color:red">*</span></label>
+    <input name="fname" id="fnameBox" type="text"  placeholder="First Name" value="{{ emp.id_number }}" required />
+    
+    <label for="mnameBox">Middle Initial</label>
+    <input name="mname" id="mnameBox" type="text"  placeholder='M' />
+    
+    <label for="lnameBox">Last Name<span style="color:red">*</span></label>
+    <input name="lname" id="lnameBox" type="text" placeholder="Last Name" required />
+    -->
+    
+
+</form>
+
+
+
 {% endblock content %}
