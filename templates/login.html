@@ -7,6 +7,9 @@ Login
 <!-- Code to check if a user is logged in -->
 {% block content %}
 
+<h1>Login</h1>
+<p></p>
+
 {% if user.is_authenticated %}
 <p>You are already logged in. Would you like to <a href='/logout'>Logout</a>?</p>
 

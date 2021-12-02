@@ -9,6 +9,8 @@ label {
    clear: left;
    margin: 5px;
    width: 200px;
+   color: white;
+   font-weight: bold;
 }
 
 input, select, textarea {
@@ -26,11 +28,14 @@ form p {
    clear: left;
    text-align: center;
    padding-top: 40px;
+   color: white;
+   font-weight: bold;
 }
 
 input[type='submit'] {
-   background-color: rgb(144, 170, 144);
-   color: rgb(245,245,165);
+   background-color: rgb(85, 138, 85);
+   color: white;
+   font-weight: bold;
    border-radius: 20px;
    float: none;
    display: inline;

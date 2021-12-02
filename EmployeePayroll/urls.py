@@ -30,11 +30,12 @@ from .views import home_view
 
 urlpatterns = [
     path('', home_view),
-    path('employees/', search_employee_view),
-    path('employees/create', add_employee_view),
     path('login', login_view),
     path('logout', logout_view),
     path('register', register_view),
     path('search', home_view),
+    path('employees/', search_employee_view),
+    path('employees/create', add_employee_view),
+    path('employees/edit', edit_employee_view),
     path('admin/', admin.site.urls),
 ]
