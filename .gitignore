@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Django #
 *.log
 *.pot
@@ -137,3 +138,6 @@ pip-delete-this-directory.txt
 # Control.system-ca-bundle 
 # GitHub.sublime-settings 
 
+=======
+.env
+>>>>>>> main
