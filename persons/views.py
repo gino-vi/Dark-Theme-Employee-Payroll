@@ -10,7 +10,11 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def add_employee_view(request):
     context = {}
-    
+    lastEmployee = Employee.objects.latest("id_number")
+    #print(lastEmployee)
+    #print(lastEmployee.id_number)
+    #print(lastEmployee.id_number + 1)
+
     if request.method == "POST":
         emp_fname = request.POST.get("fname")
         emp_mname = request.POST.get("mname")
@@ -18,16 +22,17 @@ def add_employee_view(request):
         emp_address = request.POST.get("address")
         emp_dob = request.POST.get("dob")
         emp_email = request.POST.get('email')
-        emp_id = request.POST.get("id") #needs to be updated to auto generate
+        #emp_id = request.POST.get("id") #needs to be updated to auto generate
+        emp_id = lastEmployee.id_number + 1
         emp_date_hired = request.POST.get("hired")
         emp_wage = request.POST.get("wage")
-
 
         Employee.objects.create(first_name = emp_fname, middle_name = emp_mname, last_name = emp_lname, address = emp_address,
                                 birth_date = emp_dob, email = emp_email, id_number = emp_id, date_hired = emp_date_hired, pay_rate = emp_wage,
                                 active = True)
 
         context['created'] = True
+
 
     return  render(request,'add-employee.html', context=context)   
     
@@ -36,6 +41,13 @@ def add_employee_view(request):
 @login_required
 def edit_employee_view(request):
     context={}
+    employees = Employee.objects.all()
+    context = {
+        'employees':employees,
+
+    }
+
+
 
     return render(request,'edit-employee.html', context=context)
 
@@ -52,7 +64,7 @@ def search_employee_view(request):
     employee_obj = None
 
     if id_number is not None:
-        employee_obj = Employee.objects.get(id=id_number)
+        employee_obj = Person.objects.get(id_number=id_number)
     
     context = {
         "object": employee_obj
