@@ -2,7 +2,7 @@ from typing import ContextManager
 from django.shortcuts import render
 from django import template
 from django.http import HttpResponse
-from .models import Employee
+from .models import Employee, Paystub
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -61,3 +61,54 @@ def search_employee_view(request):
 
     # **************************************************************************
 
+@login_required
+def generate_paystub(request):
+    employees = Employee.objects.all()
+    context = {'employees':employees}
+
+    if request.method == "POST":
+        context = {}
+        emp_id = request.POST.get("employeeBox")
+        emp = Employee.objects.get(pk=emp_id)
+        pstart = request.POST.get("so_period")
+        pend = request.POST.get("eo_period")
+        hworked = float(request.POST.get("total"))
+        emp_rate = float(emp.pay_rate)
+        emp_gross = calculate_gross(hworked, emp_rate)
+        emp_tax = calculate_taxes(emp_rate, emp_gross)
+        emp_net = calculate_net(emp_gross, emp_tax)
+        Paystub.objects.create(employee = emp, pay_period_start = pstart, pay_period_end = pend,
+                                hours_worked = hworked, rate = emp_rate, gross_pay = emp_gross, 
+                                taxes = emp_tax, net_pay = emp_net)
+        context['created'] = True
+    HTML_STRING = render(request, "generate-pay.html", context=context)
+    return HttpResponse(HTML_STRING)
+    
+def calculate_gross(h, r):
+    gross = h * r
+    return gross
+    
+def calculate_taxes(r, g):
+    weekly_salary = r*40
+    annual_salary = weekly_salary*52
+
+    if annual_salary < 9950:
+        tax_rate = 0.1
+    elif annual_salary < 40525:
+        tax_rate = 0.12
+    elif annual_salary < 86375:
+        tax_rate = 0.22
+    elif annual_salary < 164925:
+        tax_rate = 0.24
+    elif annual_salary < 209425:
+        tax_rate = 0.32
+    elif annual_salary < 523600:
+        tax_rate = 0.35
+    else:
+        tax_rate = 0.37
+    taxes = g*tax_rate
+    return taxes
+
+def calculate_net(g, t):
+    net = g - t
+    return net

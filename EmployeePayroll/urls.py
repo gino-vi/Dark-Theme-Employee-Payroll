@@ -19,7 +19,8 @@ from django.urls import path
 from persons.views import (
     add_employee_view, 
     search_employee_view, 
-    edit_employee_view
+    edit_employee_view, 
+    generate_paystub
 ) 
 from accounts.views import (
     login_view, 
@@ -37,4 +38,5 @@ urlpatterns = [
     path('register', register_view),
     path('search', home_view),
     path('admin/', admin.site.urls),
+    path('generate-pay', generate_paystub),
 ]
