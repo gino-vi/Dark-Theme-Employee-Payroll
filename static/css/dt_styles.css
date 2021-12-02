@@ -29,7 +29,7 @@ body {
 
 header {
    width: 100%;
-
+   background: linear-gradient(to bottom, rgb(44, 70, 44), black);
 }
 
 header img#logoimg {
@@ -44,6 +44,10 @@ header h1 {
    margin: 5px 5px 5px;
    color: white;
    text-align: center;
+}
+
+header h1 a {
+   float: right;
 }
 
 /* Navigation Styles */
@@ -79,7 +83,7 @@ nav a:hover {
 /* Section Styles */
 
 section {
-   background: rgb(245,245,165);
+   background: linear-gradient(to bottom, rgb(44, 70, 44), black);
    flex: 2 1 421px; 
    padding: 10px 20px 20px 40px; 
 }
@@ -87,11 +91,15 @@ section {
 section h1 {
    font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
    font-size: 1.8em;
+   font-weight: bold;
+   text-align: center;
    margin: 20px 0px 5px;
    color: rgb(83, 183, 51);
 }
 
 section > p {
+   color: white;
+   font-weight: bold;
    margin-bottom: 20px;
    padding-bottom: 9px;
    border-bottom: 3px solid rgb(83, 183, 51);
@@ -101,8 +109,8 @@ section > p {
 /* Aside Styles */
 
 aside {
-   background: rgb(144, 170, 144);
-   color: white;
+   background: linear-gradient(to bottom, rgb(44, 70, 44), black);
+   color:white;
    flex: 1 2 220px ;
    padding: 25px;    
 }
@@ -121,18 +129,20 @@ dl a {
    color: gold;
 }
 
+
+
 /* Footer styles */   
 
 footer {
    color: white;    
-   background: rgb(44, 70, 44);  
-   height: 70px;
-   padding-top: 20px;
+   background: black;  
+   height: 25px;
+   padding-top: 5px;
    text-align: center;
-   font-size: 0.9em; 
+   font-size: 0.8em; 
+   font-weight: bold;
    width: 100%;
 }
-
 
 /* ===============================
    Mobile Styles: 0px to 640px 

@@ -2,6 +2,9 @@
 
 
 {% block content %}
+<h1>Add Employee</h1>
+<p></p>
+
 
 <form id="addEmployeeForm" method="POST">
     {% csrf_token %}
@@ -33,7 +36,7 @@
     <input name="wage" id="wageBox" type="number" step="0.01" required />
 
     <p>
-     <input type="submit" value="Create Employee" />
+     <input type="submit" value="Submit" />
     </p>
     
 </form>

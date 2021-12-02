@@ -29,15 +29,15 @@ def add_employee_view(request):
 
         context['created'] = True
 
-    HTML_STRING = render(request, "add-employee.html", context=context)
-
-    return HttpResponse(HTML_STRING)
+    return  render(request,'add-employee.html', context=context)   
+    
 
 # **************************************************************************   
 @login_required
 def edit_employee_view(request):
+    context={}
 
-    return HttpResponse("edit-employee.html")
+    return render(request,'edit-employee.html', context=context)
 
 # **************************************************************************
 @login_required
