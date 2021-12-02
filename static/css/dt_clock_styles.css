@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+@font-face {
+   font-family: Segment14;
+   src: url('custom_fonts/segment14.woff') format('woff'),
+        url('custom_fonts/segment14.ttf') format('truetype');
+}
+
+/*
+    digital clock css stylesheet 
+*/
+
+div#clock {
+    border: 5px solid rgb(83, 183, 51);
+    border-radius: 20px;
+    width: 100%;
+ }
+ div#date, div#time {
+    font-size: 1.2em;
+    color:hsl(64,84%,73%);
+    font-family: Segment14;
+    text-shadow: 1px 1px 1px red, 3px 3px 10px white;
+    text-align: center;
+    margin: 15px auto;
+ }
+ 
+ div#wday {
+    font-size: 1.2em;
+    color:hsl(64,84%,73%);
+    font-family: Segment14;
+    text-shadow: 3px 3px 3px red, 3px 3px 10px white;
+    text-align: center;
+    margin: 15px auto;
+    letter-spacing: 0.25em;
+ }
+ 

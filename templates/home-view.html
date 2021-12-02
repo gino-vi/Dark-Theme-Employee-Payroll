@@ -1,21 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}
-Login
-{% endblock %}
-
 {% block content %}
 
-{% if user.is_authenticated %}
+<h1>Home</h1>
+<p></p>
 
-<p>You are already logged in. Would you like to <a href='/logout'>Logout</a>.</p>
-
-{% else %}
-
-<p>You are not logged in. Please <a href='/login'>Login</a>.</p>
-
-{% endif %}
-
+{% csrf_token %}
 <p>
     Software that allows Admins to keep track of employee attendance and payroll. 
     The Admin creates employee profiles for each employee by entering relevant personal 

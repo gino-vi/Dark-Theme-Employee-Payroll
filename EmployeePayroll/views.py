@@ -1,11 +1,18 @@
 """
 To render HTML webpages
 """
+from typing import ContextManager
+from django.shortcuts import render
+from django import template
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
-from django.template.loader import render_to_string
 
+
+
+
+# **************************************************************************
+@login_required
 def home_view(request):
 
-    HTML_STRING = render_to_string("home-view.html")
-    return HttpResponse(HTML_STRING)
+    return render(request,'home-view.html', {})
