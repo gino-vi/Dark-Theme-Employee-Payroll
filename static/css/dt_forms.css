@@ -1,0 +1,45 @@
+/*
+    Form Style Sheet
+    Form Layout Styles
+*/
+
+label {
+   display: block;
+   float: left;
+   clear: left;
+   margin: 5px;
+   width: 200px;
+   color: white;
+   font-weight: bold;
+}
+
+input, select, textarea {
+   display: block;
+   float: left;
+   margin: 5px 0px;
+   width: 200px;
+}
+
+textarea {
+   height: 100px;
+}
+
+form p {
+   clear: left;
+   text-align: center;
+   padding-top: 40px;
+   color: white;
+   font-weight: bold;
+}
+
+input[type='submit'] {
+   background-color: rgb(85, 138, 85);
+   color: white;
+   font-weight: bold;
+   border-radius: 20px;
+   float: none;
+   display: inline;
+   font-size: 1.1em;
+   height: 30px;
+   width: 150px;
+}

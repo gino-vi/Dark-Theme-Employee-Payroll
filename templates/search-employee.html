@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<h1>Search Employee</h1>
+<p></p>
+
+<form id="searchEmployeeForm" action="/" method="GET">
+    {% csrf_token %}
+    
+    <label for="idBox">ID Number*</label>
+    <input name="id" id="idBox" type="number" />
+    <p>
+        <input type="submit" value="Search" />
+    </p>
+    
+    
+</form>
+
+{% endblock content %}
