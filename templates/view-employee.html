@@ -15,22 +15,14 @@
         <h5>First Name: {{emp.first_name}}</h5>
         <h5>Last Name: {{emp.last_name}}</h5>
         <h5>E-mail: {{emp.email}}</h5>
-    {% endfor %}
+    <p>
+    <input type="submit" value="Submit" />
+    </p>
     </select>
+    {% endfor %}
     <br/>
     <br/>
     <br/>
-    <!--
-    <label for="fnameBox">First Name*<span style="color:red">*</span></label>
-    <input name="fname" id="fnameBox" type="text"  placeholder="First Name" value="{{ emp.id_number }}" required />
-
-    <label for="mnameBox">Middle Initial</label>
-    <input name="mname" id="mnameBox" type="text"  placeholder='M' />
-
-    <label for="lnameBox">Last Name<span style="color:red">*</span></label>
-    <input name="lname" id="lnameBox" type="text" placeholder="Last Name" required />
-    -->
-
 
 </form>
 {% endblock content %}
