@@ -8,8 +8,14 @@
 <form method="POST" id="updateEmployeeForm">
     {% csrf_token %}
     
-     
-    <label for="fnameBox">First Name*<span style="color:red">*</span></label>
+    <label for="activeBox">Active<span style="color:red">*</span></label>
+    {% if object.active %}
+    <input name="active" id="activeBox" type="checkbox"  value="Active" checked required /> 
+    {% else %}
+    <input name="active" id="activeBox" type="checkbox"  value="Inactive" unchecked required /> 
+    {% endif%}
+
+    <label for="fnameBox">First Name<span style="color:red">*</span></label>
     <input name="fname" id="fnameBox" type="text"  placeholder="First Name" value="{{ object.first_name}}" required />
     
     <label for="mnameBox">Middle Initial</label>
@@ -18,21 +24,18 @@
     <label for="lnameBox">Last Name<span style="color:red">*</span></label>
     <input name="lname" id="lnameBox" type="text" placeholder="Last Name" value="{{ object.last_name}}" required />
     
-    <label for="dobBox">Date Of Birth<span style="color:red">*</span></label>
-    <input name="dob" id="dobBox" type="date" value="{{ object.birth_date }}" required />
-
     <label for="addBox">Address<span style="color:red">*</span></label>
     <textarea name="address" id="addBox" placeholder="Enter Address" value="{{ object.address }}" required ></textarea>
     
     <label for="emailBox">Email</label>
     <input name="email" id="emailBox" type ="email" value="{{ object.email }}" />
     
-    <label for="hiredBox">Hire Date<span style="color:red">*</span></label>
-    <input name="hired" id="hiredBox" type="date" value="{{ object.date_hired }}" required />
-    
     <label for="wageBox">Wage<span style="color:red">*</span></label>
     <input name="wage" id="wageBox" type="number" step="0.01" value="{{ object.pay_rate }}" required />
     
+    <p>
+        <input type="submit" value="Update" />
+    </p>
 
 </form>
 
