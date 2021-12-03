@@ -89,8 +89,15 @@ def search_employee_view(request):
     # **************************************************************************
 
 @login_required
-def view_employee_view(request):
-    context={'employees':Employee.objects.all()}
+def view_employee_view(request, id=None):
+    employee_obj = None
+    if id is not None:
+        employee_obj = Employee.objects.get(id_number=id)
+        print(employee_obj.birth_date)
+        print(employee_obj.address)
+    context= {
+    'object': employee_obj,
+    }
 
     return render(request,'view-employee.html', context=context)
 

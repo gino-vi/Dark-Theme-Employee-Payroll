@@ -2,34 +2,16 @@
 
 
 {% block content %}
-<h1>View Employee</h1>
+<h1>Viewing Employee: {{ object.last_name }}, {{ object.first_name}}</h1>
 <p></p>
-
-<form method="POST" id="updateEmployeeForm">
     {% csrf_token %}
-    <label for="employeeBox">Employee<span style="color:red"></span></label>
-    <select name="employeeBox" required>
-        <option>Select an Employee</option>
-    {% for emp in employees %}
-        <option value="{{ emp.id_number }}">{{ emp.first_name }} {{emp.last_name}}</option>
-        <h5>ID Number: {{emp.id_number}}</h5>
-        <h5>First Name: {{emp.first_name}}</h5>
-        <h5>Middle Name: {{emp.middle_name}}</h5>
-        <h5>Last Name: {{emp.last_name}}</h5>
-        <h5>E-mail: {{emp.email}}</h5>
-        <h5>Address: {{emp.address}}</h5>
-        <h5>Date of Birth: {{emp.birth_date}}</h5>
-        <h5>Pay Rate: {{emp.pay_rate}}</h5>
-        <h5>Active?: {{emp.active}}</h5>
-
-    <p>
-    <input type="submit" value="Submit" />
-    </p>
-    </select>
-    {% endfor %}
-    <br/>
-    <br/>
-    <br/>
-
-</form>
+    <h5>ID Number: {{object.id_number}}</h5>
+    <h5>First Name: {{object.first_name}}</h5>
+    <h5>Middle Name: {{object.middle_name}}</h5>
+    <h5>Last Name: {{object.last_name}}</h5>
+    <h5>E-mail: {{object.email}}</h5>
+    <h5>Address: {{object.address}}</h5>
+    <h5>Date of Birth: {{object.birth_date}}</h5>
+    <h5>Pay Rate: {{object.pay_rate}}</h5>
+    <h5>Active?: {{object.active}}</h5>
 {% endblock content %}

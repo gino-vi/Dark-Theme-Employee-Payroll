@@ -31,7 +31,6 @@ class Paystub(models.Model):
     net_pay = models.DecimalField(max_digits=7, decimal_places=2)#Need to figure out how to connect this to the function below
 
 class Schedule(models.Model):
-    employee = models.ForeignKey(Employee, default=None, on_delete=models.CASCADE)
     day1 = models.FloatField(default=0)
     day2 = models.FloatField(default=0)
     day3 = models.FloatField(default=0)
