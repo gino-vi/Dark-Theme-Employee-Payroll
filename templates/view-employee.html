@@ -3,6 +3,7 @@
 
 {% block content %}
 <h1>Viewing Employee: {{ object.last_name }}, {{ object.first_name}}</h1>
+
 <p></p>
     {% csrf_token %}
     <h5>ID Number: {{object.id_number}}</h5>
@@ -14,4 +15,5 @@
     <h5>Date of Birth: {{object.birth_date}}</h5>
     <h5>Pay Rate: {{object.pay_rate}}</h5>
     <h5>Active?: {{object.active}}</h5>
+    </p>
 {% endblock content %}

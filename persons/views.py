@@ -48,21 +48,6 @@ def edit_employee_view(request,id=None):
     context = {
         "object": employee_obj,
     }
-
-    if request.method == "POST":
-        emp_active = request.POST.get("active")
-        emp_fname = request.POST.get("fname")
-        emp_mname = request.POST.get("mname")
-        emp_lname = request.POST.get("lname")
-        emp_address = request.POST.get("address")
-        emp_dob = request.POST.get("dob")
-        emp_email = request.POST.get('email')
-        emp_date_hired = request.POST.get("hired")
-        emp_wage = request.POST.get("wage")
-
-        print(emp_active)
-
-
     return render(request,'edit-employee.html', context=context)
 
 # **************************************************************************
@@ -93,8 +78,6 @@ def view_employee_view(request, id=None):
     employee_obj = None
     if id is not None:
         employee_obj = Employee.objects.get(id_number=id)
-        print(employee_obj.birth_date)
-        print(employee_obj.address)
     context= {
     'object': employee_obj,
     }

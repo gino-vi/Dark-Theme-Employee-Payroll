@@ -3,6 +3,10 @@
     Form Layout Styles
 */
 
+h5 {
+  color: white;
+}
+
 label {
    display: block;
    float: left;
