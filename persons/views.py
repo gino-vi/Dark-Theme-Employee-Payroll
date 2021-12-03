@@ -76,14 +76,7 @@ def search_employee_view(request):
 
 @login_required
 def view_employee_view(request):
-    context={}
-    employees = Employee.objects.all()
-    context = {
-        'employees':employees,
-
-    }
-
-
+    context={'employees':Employee.objects.all()}
 
     return render(request,'view-employee.html', context=context)
 

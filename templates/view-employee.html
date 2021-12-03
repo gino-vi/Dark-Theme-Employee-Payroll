@@ -7,11 +7,14 @@
 
 <form method="POST" id="updateEmployeeForm">
     {% csrf_token %}
-    <label for="employeeBox">Employee<span style="color:red">*</span></label>
+    <label for="employeeBox">Employee<span style="color:red"></span></label>
     <select name="employeeBox" required>
         <option>Select an Employee</option>
     {% for emp in employees %}
         <option value="{{ emp.id_number }}">{{ emp.first_name }} {{emp.last_name}}</option>
+        <h5>First Name: {{emp.first_name}}</h5>
+        <h5>Last Name: {{emp.last_name}}</h5>
+        <h5>E-mail: {{emp.email}}</h5>
     {% endfor %}
     </select>
     <br/>
