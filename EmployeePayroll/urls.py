@@ -37,8 +37,8 @@ urlpatterns = [
     path('register', register_view),
     path('search', search_employee_view),
     path('create', add_employee_view),
-    path('edit', edit_employee_view),
-    path('admin/', admin.site.urls),
+    path('edit/<int:id>/', edit_employee_view),
+    path('admin', admin.site.urls),
     path('generate-pay', generate_paystub),
     path('view', view_employee_view),
 ]
