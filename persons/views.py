@@ -34,10 +34,10 @@ def add_employee_view(request):
         context['created'] = True
 
 
-    return  render(request,'add-employee.html', context=context)   
-    
+    return  render(request,'add-employee.html', context=context)
 
-# **************************************************************************   
+
+# **************************************************************************
 @login_required
 def edit_employee_view(request):
     context={}
@@ -54,7 +54,7 @@ def edit_employee_view(request):
 # **************************************************************************
 @login_required
 def search_employee_view(request):
-    query_dict = request.GET 
+    query_dict = request.GET
 
     try:
         id_number = int(query_dict.get("id"))
@@ -65,11 +65,27 @@ def search_employee_view(request):
 
     if id_number is not None:
         employee_obj = Person.objects.get(id_number=id_number)
-    
+
     context = {
         "object": employee_obj
     }
     return render(request, "search-employee.html", context=context)
+
+
+    # **************************************************************************
+
+@login_required
+def view_employee_view(request):
+    context={}
+    employees = Employee.objects.all()
+    context = {
+        'employees':employees,
+
+    }
+
+
+
+    return render(request,'view-employee.html', context=context)
 
     # **************************************************************************
 
@@ -90,16 +106,16 @@ def generate_paystub(request):
         emp_tax = calculate_taxes(emp_rate, emp_gross)
         emp_net = calculate_net(emp_gross, emp_tax)
         Paystub.objects.create(employee = emp, pay_period_start = pstart, pay_period_end = pend,
-                                hours_worked = hworked, rate = emp_rate, gross_pay = emp_gross, 
+                                hours_worked = hworked, rate = emp_rate, gross_pay = emp_gross,
                                 taxes = emp_tax, net_pay = emp_net)
         context['created'] = True
     HTML_STRING = render(request, "generate-pay.html", context=context)
     return HttpResponse(HTML_STRING)
-    
+
 def calculate_gross(h, r):
     gross = h * r
     return gross
-    
+
 def calculate_taxes(r, g):
     weekly_salary = r*40
     annual_salary = weekly_salary*52
