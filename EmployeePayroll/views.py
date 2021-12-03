@@ -11,5 +11,5 @@ def home_view(request):
     context = {
         "employees": employees
     }
-    print(employees)
+    #print(employees)
     return render(request, "home-view.html", context=context)

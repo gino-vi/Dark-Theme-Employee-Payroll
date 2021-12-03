@@ -8,11 +8,11 @@
 <form method="POST" id="updateEmployeeForm">
     {% csrf_token %}
     
-    <label for="activeBox">Active<span style="color:red">*</span></label>
+    <label for="activeBox">Active</label>
     {% if object.active %}
-    <input name="active" id="activeBox" type="checkbox"  value="Active" checked required /> 
+    <input name="active" id="activeBox" type="checkbox"  value="Active" checked /> 
     {% else %}
-    <input name="active" id="activeBox" type="checkbox"  value="Inactive" unchecked required /> 
+    <input name="active" id="activeBox" type="checkbox"  value="Inactive" unchecked /> 
     {% endif%}
 
     <label for="fnameBox">First Name<span style="color:red">*</span></label>
@@ -25,7 +25,7 @@
     <input name="lname" id="lnameBox" type="text" placeholder="Last Name" value="{{ object.last_name}}" required />
     
     <label for="addBox">Address<span style="color:red">*</span></label>
-    <textarea name="address" id="addBox" placeholder="Enter Address" value="{{ object.address }}" required ></textarea>
+    <textarea name="address" id="addBox" placeholder="Enter Address" required >{{ object.address }}</textarea>
     
     <label for="emailBox">Email</label>
     <input name="email" id="emailBox" type ="email" value="{{ object.email }}" />
