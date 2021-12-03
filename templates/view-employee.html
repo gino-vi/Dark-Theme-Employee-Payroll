@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<h1>View Employee</h1>
+<p></p>
+
+
+<form id="addEmployeeForm" method="POST">
+    <h5>View Employee</h5>
+    {% csrf_token %}
+    <label for="fnameBox">First Name</label>
+    <input name="fname" id="fnameBox" type="text"  placeholder="First Name" required />
+
+</form>
+<h1 style="margin-left:20px">Employee List</h1>
+
+<ol>
+  {% for emp in object_list %}
+    <li>
+        <p style="font-size:20px"><b>{{ emp.name }}</b> ({{ emp.post }})</p>
+        <p style="font-size:18px">{{ emp.department }} department</p>
+    </li>
+  {% endfor %}
+</ol>
+{% endblock content %}
