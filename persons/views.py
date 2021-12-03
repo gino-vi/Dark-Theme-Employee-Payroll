@@ -10,10 +10,11 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def add_employee_view(request):
     context = {}
-    lastEmployee = Employee.objects.latest("id_number")
-    #print(lastEmployee)
-    #print(lastEmployee.id_number)
-    #print(lastEmployee.id_number + 1)
+    lastEmployee = None
+    try:
+        lastEmployee = Employee.objects.latest("id_number")
+    except:
+        lastEmployee = 0
 
     if request.method == "POST":
         emp_fname = request.POST.get("fname")
@@ -22,7 +23,6 @@ def add_employee_view(request):
         emp_address = request.POST.get("address")
         emp_dob = request.POST.get("dob")
         emp_email = request.POST.get('email')
-        #emp_id = request.POST.get("id") #needs to be updated to auto generate
         emp_id = lastEmployee.id_number + 1
         emp_date_hired = request.POST.get("hired")
         emp_wage = request.POST.get("wage")
@@ -32,6 +32,7 @@ def add_employee_view(request):
                                 active = True)
 
         context['created'] = True
+        return render(request,'home-view.html', {})
 
 
     return  render(request,'add-employee.html', context=context)
@@ -40,10 +41,11 @@ def add_employee_view(request):
 # **************************************************************************
 @login_required
 def edit_employee_view(request,id=None):
+    context = {}
     employee_obj = None
     if id is not None:
         employee_obj = Employee.objects.get(id_number=id)
-        print(employee_obj.birth_date)
+        ##print(employee_obj.birth_date)
         print(employee_obj.address)
     context = {
         "object": employee_obj,
@@ -55,13 +57,22 @@ def edit_employee_view(request,id=None):
         emp_mname = request.POST.get("mname")
         emp_lname = request.POST.get("lname")
         emp_address = request.POST.get("address")
-        emp_dob = request.POST.get("dob")
-        emp_email = request.POST.get('email')
-        emp_date_hired = request.POST.get("hired")
+        emp_email = request.POST.get("email")
         emp_wage = request.POST.get("wage")
-
         print(emp_active)
-
+        if emp_active == 'Active':
+            employee_obj.active = True
+        else:
+            employee_obj.active = False
+        employee_obj.first_name = emp_fname
+        employee_obj.middle_name = emp_mname
+        employee_obj.last_name = emp_lname
+        employee_obj.address = emp_address
+        employee_obj.email = emp_email
+        employee_obj.wage = emp_wage
+        employee_obj.save()
+        
+        return render(request,'home-view.html', {})
 
     return render(request,'edit-employee.html', context=context)
 
