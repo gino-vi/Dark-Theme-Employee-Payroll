@@ -40,5 +40,5 @@ urlpatterns = [
     path('edit/<int:id>/', edit_employee_view),
     path('admin', admin.site.urls),
     path('generate-pay', generate_paystub),
-    path('view', view_employee_view),
+    path('view/<int:id>/', view_employee_view),
 ]

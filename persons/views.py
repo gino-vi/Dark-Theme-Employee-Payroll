@@ -71,7 +71,7 @@ def edit_employee_view(request,id=None):
         employee_obj.email = emp_email
         employee_obj.wage = emp_wage
         employee_obj.save()
-        
+
         return render(request,'home-view.html', {})
 
     return render(request,'edit-employee.html', context=context)
@@ -100,8 +100,13 @@ def search_employee_view(request):
     # **************************************************************************
 
 @login_required
-def view_employee_view(request):
-    context={'employees':Employee.objects.all()}
+def view_employee_view(request, id=None):
+    employee_obj = None
+    if id is not None:
+        employee_obj = Employee.objects.get(id_number=id)
+    context= {
+    'object': employee_obj,
+    }
 
     return render(request,'view-employee.html', context=context)
 
