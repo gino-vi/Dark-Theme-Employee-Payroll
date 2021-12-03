@@ -39,16 +39,16 @@ def add_employee_view(request):
 
 # **************************************************************************   
 @login_required
-def edit_employee_view(request):
-    context={}
-    employees = Employee.objects.all()
-    context = {
-        'employees':employees,
+def edit_employee_view(request, id=None):
+    employee_obj = None
 
+    if id is not None:
+        employee_obj = Employee.objects.get(id_number=id)
+    
+    context= {
+        "object": employee_obj
     }
-
-
-
+    
     return render(request,'edit-employee.html', context=context)
 
 # **************************************************************************
@@ -71,7 +71,7 @@ def search_employee_view(request):
     }
     return render(request, "search-employee.html", context=context)
 
-    # **************************************************************************
+# **************************************************************************
 
 @login_required
 def generate_paystub(request):
@@ -95,7 +95,9 @@ def generate_paystub(request):
         context['created'] = True
     HTML_STRING = render(request, "generate-pay.html", context=context)
     return HttpResponse(HTML_STRING)
-    
+
+# **************************************************************************    
+
 def calculate_gross(h, r):
     gross = h * r
     return gross
@@ -124,3 +126,5 @@ def calculate_taxes(r, g):
 def calculate_net(g, t):
     net = g - t
     return net
+
+# **************************************************************************
