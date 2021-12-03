@@ -6,14 +6,14 @@
 
 <p></p>
     {% csrf_token %}
-    <h5>ID Number: {{object.id_number}}</h5>
-    <h5>First Name: {{object.first_name}}</h5>
-    <h5>Middle Name: {{object.middle_name}}</h5>
-    <h5>Last Name: {{object.last_name}}</h5>
-    <h5>E-mail: {{object.email}}</h5>
-    <h5>Address: {{object.address}}</h5>
-    <h5>Date of Birth: {{object.birth_date}}</h5>
-    <h5>Pay Rate: {{object.pay_rate}}</h5>
-    <h5>Active?: {{object.active}}</h5>
+    <h2>ID Number: <span>{{object.id_number}}</span> </h2>
+    <h2>First Name: <span>{{object.first_name}}</span></h2>
+    <h2>Middle Name: <span>{{object.middle_name}}</span></h2>
+    <h2>Last Name: <span>{{object.last_name}}</span></h2>
+    <h2>E-mail: <span>{{object.email}}</span></h2>
+    <h2>Address: <span>{{object.address}}</span></h2>
+    <h3>Date of Birth: <span>{{object.birth_date}}</span></h3>
+    <h2>Pay Rate: <span>{{object.pay_rate}}</span></h2>
+    <h2>Active?: <span>{{object.active}}</span></h2>
     </p>
 {% endblock content %}
