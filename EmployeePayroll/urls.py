@@ -17,14 +17,15 @@ from django.contrib import admin
 from django.urls import path
 
 from persons.views import (
-    add_employee_view, 
-    search_employee_view, 
-    edit_employee_view, 
+    add_employee_view,
+    search_employee_view,
+    edit_employee_view,
+    view_employee_view,
     generate_paystub
-) 
+)
 from accounts.views import (
-    login_view, 
-    register_view, 
+    login_view,
+    register_view,
     logout_view
 )
 from .views import home_view
@@ -39,4 +40,5 @@ urlpatterns = [
     path('edit/<int:id>/', edit_employee_view),
     path('admin', admin.site.urls),
     path('generate-pay', generate_paystub),
+    path('view', view_employee_view),
 ]
