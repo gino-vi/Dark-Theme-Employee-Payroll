@@ -7,7 +7,7 @@
 
 <form id="addEmployeeForm" method="POST">
     {% csrf_token %}
-    <label for="fnameBox">First Name*<span style="color:red">*</span></label>
+    <label for="fnameBox">First Name<span style="color:red">*</span></label>
     <input name="fname" id="fnameBox" type="text"  placeholder="First Name" required />
     
     <label for="mnameBox">Middle Initial</label>
