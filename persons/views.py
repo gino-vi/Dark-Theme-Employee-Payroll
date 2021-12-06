@@ -4,7 +4,9 @@ from django import template
 from django.http import HttpResponse
 from .models import Employee, Paystub
 from django.contrib.auth.decorators import login_required
-from django.db.models import Count
+EmployeePayroll-kathleen
+import pdb
+# pdb.set_trace() - use as breakpoint
 
 # Create your views here.
 
@@ -88,21 +90,31 @@ def edit_employee_view(request,id=None):
 # **************************************************************************
 @login_required
 def search_employee_view(request):
-    query_dict = request.GET
-
-    try:
-        id_number = int(query_dict.get("id"))
-    except:
-        id_number = None
-
-    employee_obj = None
-
-    if id_number is not None:
-        employee_obj = Person.objects.get(id_number=id_number)
-
+    employees = Employee.objects.all()
     context = {
-        "object": employee_obj
+        "employees": employees
     }
+
+    if request.method == "GET":
+        emp_fname = request.GET.get("fname")
+        emp_lname = request.GET.get("lname")
+
+    if isNotBlank(emp_fname):
+        employees = Employee.objects.filter(first_name = emp_fname)
+        context = {
+            "employees": employees
+        }
+    elif isNotBlank(emp_lname):
+        employees = Employee.objects.filter(last_name = emp_lname)
+        context = {
+            "employees": employees
+        }
+    elif isBlank(emp_fname) and isBlank(emp_lname):
+        employees = Employee.objects.all()
+        context = {
+            "employees": employees
+        }
+
     return render(request, "search-employee.html", context=context)
 
 
@@ -172,3 +184,9 @@ def calculate_taxes(r, g):
 def calculate_net(g, t):
     net = g - t
     return net
+
+def isBlank(myString):
+    return not (myString and myString.strip())
+
+def isNotBlank(myString):
+    return bool(myString and myString.strip())
