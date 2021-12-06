@@ -4,7 +4,6 @@ from django import template
 from django.http import HttpResponse
 from .models import Employee, Paystub
 from django.contrib.auth.decorators import login_required
-EmployeePayroll-kathleen
 import pdb
 # pdb.set_trace() - use as breakpoint
 
