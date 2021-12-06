@@ -53,10 +53,12 @@ def add_employee_view(request):
 def edit_employee_view(request,id=None):
     context = {}
     employee_obj = None
+    user_count = Employee.objects.count()
     if id is not None:
         employee_obj = Employee.objects.get(id_number=id)
         ##print(employee_obj.birth_date)
         print(employee_obj.address)
+        print(f"There are {user_count} employees.")
     context = {
         "object": employee_obj,
     }
@@ -82,7 +84,7 @@ def edit_employee_view(request,id=None):
         employee_obj.wage = emp_wage
         employee_obj.save()
 
-        return render(request,'home-view.html', {})
+        return render(request,'home-view.html')
 
     return render(request,'edit-employee.html', context=context)
 
