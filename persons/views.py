@@ -4,8 +4,17 @@ from django import template
 from django.http import HttpResponse
 from .models import Employee, Paystub
 from django.contrib.auth.decorators import login_required
+from django.db.models import Count
 
 # Create your views here.
+
+def home_stats(request):
+    user_count = Employee.objects.count()
+    paystub_count = Paystub.objects.count()
+
+    context = {'user_count' : Employee.objects.count(), 'paystub_count' : paystub_count}
+
+    return render(request,'home-view.html', context)
 # **************************************************************************
 @login_required
 def add_employee_view(request):
