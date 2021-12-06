@@ -7,11 +7,25 @@
 
 {% csrf_token %}
 <p>
-    Software that allows Admins to keep track of employee attendance and payroll. 
-    The Admin creates employee profiles for each employee by entering relevant personal 
-    information (name, job position, qualification, etc.). They can search for an employee, 
-    add employee, edit employee details, set status as active/inactive, check the salary 
+    Software that allows Admins to keep track of employee attendance and payroll.
+    The Admin creates employee profiles for each employee by entering relevant personal
+    information (name, job position, qualification, etc.). They can search for an employee,
+    add employee, edit employee details, set status as active/inactive, check the salary
     details and breakdown of the salary of each employee by entering the employee ID and date.
 </p>
+<p>
+This application holds information on {{ user_count }} employees, and {{ paystub_count }} paystubs.
+</p>
+    <ul style="color:white">
+        {% for emp in employees %}
+        <li>
+            &nbsp;&nbsp;&nbsp;<a href="view/{{ emp.id_number }}" style="color: white;">View</a>
+            &nbsp;&nbsp;&nbsp;<a href="edit/{{ emp.id_number }}" style="color:white">Update</a>
+            &nbsp;&nbsp;&nbsp;<a href="#" style="color: white;">Paystubs</a>
+            &nbsp; {{ emp.id_number }} - {{ emp.last_name }}, {{ emp.first_name }}
+        </li>
+        {% endfor %}
+    </ul>
+main
 
 {% endblock content %}
