@@ -12,7 +12,7 @@ def home_stats(request):
     user_count = Employee.objects.count()
     paystub_count = Paystub.objects.count()
 
-    context = {'user_count' : Employee.objects.count(), 'paystub_count' : paystub_count}
+    context = {'user_count' : user_count, 'paystub_count' : paystub_count}
 
     return render(request,'home-view.html', context)
 # **************************************************************************
