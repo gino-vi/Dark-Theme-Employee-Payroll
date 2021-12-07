@@ -117,6 +117,12 @@ def search_employee_view(request):
 
     return render(request, "search-employee.html", context=context)
 
+def isBlank(myString):
+    return not (myString and myString.strip())
+
+def isNotBlank(myString):
+    return bool(myString and myString.strip())
+
     # **************************************************************************
 
 @login_required
@@ -184,8 +190,22 @@ def calculate_net(g, t):
     net = g - t
     return net
 
-def isBlank(myString):
-    return not (myString and myString.strip())
+# **************************************************************************
+def view_paystubs_view(request,id=None):
+    context={}
+    employee_obj = None
+    employee_paystubs = None
+    if id is not None:
+        employee_obj = Employee.objects.get(id_number=id)
+        if employee_obj is not None:
+            employee_paystubs = Paystub.objects.filter(employee=employee_obj)
 
-def isNotBlank(myString):
-    return bool(myString and myString.strip())
+            context = {
+                    "employee": employee_obj,
+                    "employee_paystubs": employee_paystubs
+                }        
+    
+
+    return render(request,'employee-paystubs-list.html', context=context)
+
+# **************************************************************************
