@@ -7,13 +7,24 @@
 
 <form method="POST" id="updateEmployeeForm">
     {% csrf_token %}
-    
+    <!--
     <label for="activeBox">Active</label>
     {% if object.active %}
     <input name="active" id="activeBox" type="checkbox"  value="Active" checked /> 
     {% else %}
     <input name="active" id="activeBox" type="checkbox"  value="Inactive" unchecked /> 
     {% endif%}
+    -->
+    <label for="activeBox">Active<span style="color:red">*</span></label>
+    <select name="active" id="activeBox">
+        {% if object.active %}
+        <option value="Active" selected>Active</option>
+        <option value="Inactive">Inactive</option>
+        {% else %}
+        <option value="Active">Active</option>
+        <option value="Inactive" selected>Inactive</option>
+        {% endif%}
+    </select>
 
     <label for="fnameBox">First Name<span style="color:red">*</span></label>
     <input name="fname" id="fnameBox" type="text"  placeholder="First Name" value="{{ object.first_name}}" required />

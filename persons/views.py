@@ -4,11 +4,8 @@ from django import template
 from django.http import HttpResponse
 from .models import Employee, Paystub
 from django.contrib.auth.decorators import login_required
-import pdb
-# pdb.set_trace() - use as breakpoint
 
 # Create your views here.
-
 def home_stats(request):
     user_count = Employee.objects.count()
     paystub_count = Paystub.objects.count()
@@ -20,11 +17,14 @@ def home_stats(request):
 @login_required
 def add_employee_view(request):
     context = {}
+    newEmployee_obj = None
     lastEmployee = None
+
     try:
         lastEmployee = Employee.objects.latest("id_number")
+        lastEmpID = lastEmployee.id_number
     except:
-        lastEmployee = 0
+        lastEmpID = 0
 
     if request.method == "POST":
         emp_fname = request.POST.get("fname")
@@ -33,16 +33,23 @@ def add_employee_view(request):
         emp_address = request.POST.get("address")
         emp_dob = request.POST.get("dob")
         emp_email = request.POST.get('email')
-        emp_id = lastEmployee.id_number + 1
+        emp_id = lastEmpID + 1
         emp_date_hired = request.POST.get("hired")
         emp_wage = request.POST.get("wage")
 
-        Employee.objects.create(first_name = emp_fname, middle_name = emp_mname, last_name = emp_lname, address = emp_address,
+        newEmployee_obj = Employee.objects.create(first_name = emp_fname, middle_name = emp_mname, last_name = emp_lname, address = emp_address,
                                 birth_date = emp_dob, email = emp_email, id_number = emp_id, date_hired = emp_date_hired, pay_rate = emp_wage,
                                 active = True)
 
-        context['created'] = True
-        return render(request,'home-view.html', {})
+        #context['created'] = True
+        if newEmployee_obj is not None:
+            context = {
+                "object": newEmployee_obj
+            }
+        else:
+            context = {}
+
+        return render(request,'view-employee.html', context=context)
 
 
     return  render(request,'add-employee.html', context=context)
@@ -53,12 +60,10 @@ def add_employee_view(request):
 def edit_employee_view(request,id=None):
     context = {}
     employee_obj = None
-    user_count = Employee.objects.count()
     if id is not None:
         employee_obj = Employee.objects.get(id_number=id)
         ##print(employee_obj.birth_date)
-        print(employee_obj.address)
-        print(f"There are {user_count} employees.")
+        ##print(employee_obj.address)
     context = {
         "object": employee_obj,
     }
@@ -81,41 +86,32 @@ def edit_employee_view(request,id=None):
         employee_obj.last_name = emp_lname
         employee_obj.address = emp_address
         employee_obj.email = emp_email
-        employee_obj.wage = emp_wage
+        employee_obj.pay_rate = emp_wage
+
         employee_obj.save()
 
-        return render(request,'home-view.html')
+        return render(request,'view-employee.html', context=context)
 
     return render(request,'edit-employee.html', context=context)
 
 # **************************************************************************
 @login_required
 def search_employee_view(request):
-    employees = Employee.objects.all()
+    query_dict = request.GET
+
+    try:
+        id_number = int(query_dict.get("id"))
+    except:
+        id_number = None
+
+    employee_obj = None
+
+    if id_number is not None:
+        employee_obj = Person.objects.get(id_number=id_number)
+
     context = {
-        "employees": employees
+        "object": employee_obj
     }
-
-    if request.method == "GET":
-        emp_fname = request.GET.get("fname")
-        emp_lname = request.GET.get("lname")
-
-    if isNotBlank(emp_fname):
-        employees = Employee.objects.filter(first_name = emp_fname)
-        context = {
-            "employees": employees
-        }
-    elif isNotBlank(emp_lname):
-        employees = Employee.objects.filter(last_name = emp_lname)
-        context = {
-            "employees": employees
-        }
-    elif isBlank(emp_fname) and isBlank(emp_lname):
-        employees = Employee.objects.all()
-        context = {
-            "employees": employees
-        }
-
     return render(request, "search-employee.html", context=context)
 
 
@@ -185,9 +181,3 @@ def calculate_taxes(r, g):
 def calculate_net(g, t):
     net = g - t
     return net
-
-def isBlank(myString):
-    return not (myString and myString.strip())
-
-def isNotBlank(myString):
-    return bool(myString and myString.strip())
