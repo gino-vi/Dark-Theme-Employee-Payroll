@@ -117,6 +117,12 @@ def search_employee_view(request):
 
     return render(request, "search-employee.html", context=context)
 
+def isBlank(myString):
+    return not (myString and myString.strip())
+
+def isNotBlank(myString):
+    return bool(myString and myString.strip())
+
     # **************************************************************************
 
 @login_required
