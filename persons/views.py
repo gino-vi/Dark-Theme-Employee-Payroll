@@ -6,13 +6,6 @@ from .models import Employee, Paystub
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-def home_stats(request):
-    user_count = Employee.objects.count()
-    paystub_count = Paystub.objects.count()
-
-    context = {'user_count' : user_count, 'paystub_count' : paystub_count}
-
-    return render(request,'home-view.html', context)
 # **************************************************************************
 @login_required
 def add_employee_view(request):
@@ -97,23 +90,32 @@ def edit_employee_view(request,id=None):
 # **************************************************************************
 @login_required
 def search_employee_view(request):
-    query_dict = request.GET
-
-    try:
-        id_number = int(query_dict.get("id"))
-    except:
-        id_number = None
-
-    employee_obj = None
-
-    if id_number is not None:
-        employee_obj = Person.objects.get(id_number=id_number)
-
+    employees = Employee.objects.all()
     context = {
-        "object": employee_obj
+        "employees": employees
     }
-    return render(request, "search-employee.html", context=context)
 
+    if request.method == "GET":
+        emp_fname = request.GET.get("fname")
+        emp_lname = request.GET.get("lname")
+
+    if isNotBlank(emp_fname):
+        employees = Employee.objects.filter(first_name = emp_fname)
+        context = {
+            "employees": employees
+        }
+    elif isNotBlank(emp_lname):
+        employees = Employee.objects.filter(last_name = emp_lname)
+        context = {
+            "employees": employees
+        }
+    elif isBlank(emp_fname) and isBlank(emp_lname):
+        employees = Employee.objects.all()
+        context = {
+            "employees": employees
+        }
+
+    return render(request, "search-employee.html", context=context)
 
     # **************************************************************************
 
