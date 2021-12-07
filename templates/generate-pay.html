@@ -2,8 +2,8 @@
 
 
 {% block content %}
-
-<form method="POST">
+{% load static %}
+<form method="POST" id="generatePayForm">
     {% csrf_token %}
     <label for="employeeBox">Employee<span style="color:red">*</span></label>
     <select name="employeeBox" required>
@@ -13,72 +13,24 @@
     {% endfor %}
     </select>
     <label for="so_period">Start of Pay Period<span style="color:red">*</span></label>
-    <input name="so_period" id="so_period" type="date" required />
-
+    <input name="so_period" id="so_period" onchange="retrieveDateRange()" type="date" required />
     <label for="eo_period">End of Pay Period<span style="color:red">*</span></label>
-    <input name="eo_period" id="eo_period" type="date" required />
+    <input name="eo_period" id="eo_period" onchange="retrieveDateRange()" type="date" required />
 
     <p>Enter the number of hours worked each day (max 10).</p>
-    <div>
-    <label for="d1Box">Day 1</label>
-    <input name="id" id="d1Box" onchange="findTotal()" type='number' step="0.01" placeholder="00" min="0" max="10" required />
-    <label for="d2Box">Day 2</label>
-    <input name="id" id="d2Box" onchange="findTotal()" type='number' step="0.01" placeholder="00" min="0" max="10" required />
-    <label for="d3Box">Day 3</label>
-    <input name="id" id="d3Box" onchange="findTotal()" type='number' step="0.01" placeholder="00" min="0" max="10" required />
-    <label for="d4Box">Day 4</label>
-    <input name="id" id="d4Box" onchange="findTotal()" type='number' step="0.01" placeholder="00" min="0" max="10" required />
-    <label for="d5Box">Day 5</label>
-    <input name="id" id="d5Box" onchange="findTotal()" type='number' step="0.01" placeholder="00" min="0" max="10" required />
-    <label for="d6Box">Day 6</label>
-    <input name="id" id="d6Box" onchange="findTotal()" type='number' step="0.01" placeholder="00" min="0" max="10" required />
-    <label for="d7Box">Day 7</label>
-    <input name="id" id="d7Box" onchange="findTotal()" type='number' step="0.01" placeholder="00" min="0" max="10" required />
-    <label for="d8Box">Day 8</label>
-    <input name="id" id="d8Box" onchange="findTotal()" type='number' step="0.01" placeholder="00" min="0" max="10" required />
-    <label for="d9Box">Day 9</label>
-    <input name="id" id="d9Box" onchange="findTotal()" type='number' step="0.01" placeholder="00" min="0" max="10" required />
-    <label for="d10Box">Day 10</label>
-    <input name="id" id="d10Box" onchange="findTotal()" type='number' step="0.01" placeholder="00" min="0" max="10" required />
-    <label for="d11Box">Day 11</label>
-    <input name="id" id="d11Box" onchange="findTotal()" type='number' step="0.01" placeholder="00" min="0" max="10" required />
-    <label for="d12Box">Day 12</label>
-    <input name="id" id="d12Box" onchange="findTotal()" type='number' step="0.01" placeholder="00" min="0" max="10" required />
-    <label for="d13Box">Day 13</label>
-    <input name="id" id="d13Box" onchange="findTotal()" type='number' step="0.01" placeholder="00" min="0" max="10" required />
-    <label for="d14Box">Day 14</label>
-    <input name="id" id="d14Box" onchange="findTotal()" type='number' step="0.01" placeholder="00" min="0" max="10" required />
-    <label for="d15Box">Day 15</label>
-    <input name="id" id="d15Box" onchange="findTotal()" type='number' step="0.01" placeholder="00" min="0" max="10" required />
-    <label for="d16Box">Day 16 (if applicable)</label>
-    <input name="id" id="d16Box" onchange="findTotal()" type='number' step="0.01" placeholder="00" min="0" max="10" />
+    
+    <div id="container"></div>
+
     <p>
-    <label for="total">Total Hours:</label>
-    <input type="text" name="total" id="total"/>
+        <label for="total">Total Hours:</label>
+        <input type="text" name="total" id="total"/>
     </p>
-    </div>
+
     <p>
+        <input type="reset" onclick="resetDateSlots()" />
         <input type="submit" value="Generate Pay" />
     </p>
+    <script src="{% static 'js/generate_paystub.js' %}"></script>
 </form>
 
-<script type="text/javascript">
-    function findTotal(){
-        var arr = document.getElementsByName('id');
-        var tot = 0;
-        for (var i = 0; i<arr.length; i++){
-            if (parseFloat(arr[i].value < 10)){
-                arr[i].setAttribute.value = 10;
-                console.log(arr[i].value)
-            }
-            if (parseFloat(arr[i].value)){
-                tot += parseFloat(arr[i].value);
-                console.log(tot)
-            }
-        }
-        document.getElementById('total').value = tot.toPrecision(4);
-    }
-
-</script>
 {% endblock content %}
-

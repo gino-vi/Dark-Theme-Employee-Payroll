@@ -157,9 +157,15 @@ def generate_paystub(request):
         Paystub.objects.create(employee = emp, pay_period_start = pstart, pay_period_end = pend,
                                 hours_worked = hworked, rate = emp_rate, gross_pay = emp_gross,
                                 taxes = emp_tax, net_pay = emp_net)
-        context['created'] = True
-    HTML_STRING = render(request, "generate-pay.html", context=context)
-    return HttpResponse(HTML_STRING)
+        
+        employee_paystubs = Paystub.objects.filter(employee=emp).order_by('-pay_period_start')
+        context = {
+            "employee": emp,
+            "employee_paystubs": employee_paystubs
+        }
+        return render(request,'employee-paystubs-list.html', context=context)
+
+    return render(request, "generate-pay.html", context=context)
 
 def calculate_gross(h, r):
     gross = h * r
@@ -198,7 +204,7 @@ def view_paystubs_view(request,id=None):
     if id is not None:
         employee_obj = Employee.objects.get(id_number=id)
         if employee_obj is not None:
-            employee_paystubs = Paystub.objects.filter(employee=employee_obj)
+            employee_paystubs = Paystub.objects.filter(employee=employee_obj).order_by('-pay_period_start')
 
             context = {
                     "employee": employee_obj,

@@ -12,11 +12,11 @@
                 <tr>
                     <th>Period Start</th>
                     <th>Period End</th>
+                    <th>Rate</th>
                     <th>Hours Worked</th>
                     <th>Gross Pay</th>
-                    <th>Net Pay</th>
-                    <th>Rate</th>
                     <th>Taxes</th>
+                    <th>Net Pay</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,11 +25,11 @@
                     <tr>
                         <td> {{ paystub.pay_period_start }} </td>
                         <td> {{ paystub.pay_period_end }} </td>
+                        <td> {{ paystub.rate }} </td>
                         <td> {{ paystub.hours_worked }} </td>
                         <td> {{ paystub.gross_pay }} </td>
-                        <td> {{ paystub.net_pay }} </td>
-                        <td> {{ paystub.rate }} </td>
                         <td> {{ paystub.taxes }} </td>
+                        <td> {{ paystub.net_pay }} </td>
                     </tr>
                 {% endfor %} 
             

@@ -20,8 +20,7 @@ body {
    flex-flow: row wrap;    
    margin: 0px auto;
    min-width: 320px;
-   max-width: 1020px;  
-   width: 100%;
+   max-width: 1180px;  
 }
 
 
@@ -60,7 +59,7 @@ nav ul {
    background: linear-gradient(to bottom, black, rgb(44, 70, 44));
         
     column-width: 200px;
-    column-gap: 25px;
+    column-gap: 20px;
     
     padding: 25px;
 }
