@@ -17,8 +17,8 @@
     <ul style="color:white">
         {% for emp in employees %}
         <li>
-            &nbsp;&nbsp;&nbsp;<a href="view/{{ emp.id_number }}" style="color: white;">View</a>
-            &nbsp;&nbsp;&nbsp;<a href="edit/{{ emp.id_number }}" style="color:white">Update</a>
+            &nbsp;&nbsp;&nbsp;<a href="/view/{{ emp.id_number }}" style="color: white;">View</a>
+            &nbsp;&nbsp;&nbsp;<a href="/edit/{{ emp.id_number }}" style="color:white">Update</a>
             &nbsp;&nbsp;&nbsp;<a href="#" style="color: white;">Paystubs</a>
             &nbsp; {{ emp.id_number }} - {{ emp.last_name }}, {{ emp.first_name }}
         </li>

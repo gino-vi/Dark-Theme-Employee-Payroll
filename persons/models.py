@@ -29,7 +29,7 @@ class Paystub(models.Model):
     #deductions = models.FloatField()
     taxes = models.DecimalField(max_digits=7, decimal_places=2) #Need to figure out how to connect this to the function below
     net_pay = models.DecimalField(max_digits=7, decimal_places=2)#Need to figure out how to connect this to the function below
-
+'''
 class Schedule(models.Model):
     day1 = models.FloatField(default=0)
     day2 = models.FloatField(default=0)
@@ -46,3 +46,4 @@ class Schedule(models.Model):
     day13 = models.FloatField(default=0)
     day14 = models.FloatField(default=0)
     day15 = models.FloatField(default=0)
+'''

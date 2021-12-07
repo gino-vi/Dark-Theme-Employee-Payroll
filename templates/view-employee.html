@@ -3,8 +3,8 @@
 
 {% block content %}
 <h1>Viewing Employee: {{ object.last_name }}, {{ object.first_name}}</h1>
-
 <p></p>
+<form>
     {% csrf_token %}
     <h2>ID Number: <span>{{object.id_number}}</span> </h2>
     <h2>First Name: <span>{{object.first_name}}</span></h2>
@@ -16,5 +16,8 @@
     <h2>Pay Rate: <span>{{object.pay_rate}}</span></h2>
     <h2>Active?: <span>{{object.active}}</span></h2>
     <h3>Photo: <span>Placeholder</span></h3> <!-- change this if we ever implement employee photos -->
-    </p>
+
+    &nbsp;&nbsp;&nbsp;<a href="/edit/{{ object.id_number }}" style="color:white">Update</a>
+    &nbsp;&nbsp;&nbsp;<a href="#" style="color: white;">Paystubs</a>
+</form>
 {% endblock content %}
