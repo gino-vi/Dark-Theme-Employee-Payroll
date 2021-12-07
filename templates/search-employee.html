@@ -19,6 +19,7 @@
     <label for="lnameBox">Last Name</label>
     <input name="lname" id="lnameBox" type="string" />
     <p>
+        <input type="reset" />
         <input type="submit" value="Search" />
     </p>
 
@@ -31,7 +32,8 @@
                     <th>ID</th>
                     <th>Last Name</th>
                     <th>First Name</th>
-                    <th></th>
+                    <th>DOB</th>
+                    <th>Links</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -42,9 +44,10 @@
                         <td> {{ emp.id_number }} </td>
                         <td> {{ emp.last_name }} </td>
                         <td> {{ emp.first_name }} </td>
-                        <td> <a href="view/{{ emp.id_number }}" style="color: white;">View</a></td>
-                        <td> <a href="edit/{{ emp.id_number }}" style="color:white">Update</a></td>
-                        <td> <a href="paystubs/{{ emp.id_number }}" style="color: white;">Paystubs</a></td>
+                        <td> {{ emp.birth_date }} </td>
+                        <td> <a href="view/{{ emp.id_number }}" style="color: white;">View</a> </td>
+                        <td> <a href="edit/{{ emp.id_number }}" style="color:white">Update</a> </td>
+                        <td> <a href="paystubs/{{ emp.id_number }}" style="color: white;">Paystubs</a> </td>
                     </tr>
                 {% endfor %} 
             </tbody>
