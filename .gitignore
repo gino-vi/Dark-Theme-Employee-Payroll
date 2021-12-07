@@ -140,3 +140,4 @@ pyenv.cfg
 
 .env
 *.sqlite3
+db.sqlite3

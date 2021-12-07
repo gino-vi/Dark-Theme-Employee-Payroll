@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Paystubs List: {{ employee.last_name }}, {{ employee.first_name}}</h1>
+<p></p>
+
+{% csrf_token %}
+<form>
+    <div id="table">
+        <table style="width:100%;">
+            <thead>
+                <tr>
+                    <th>Period Start</th>
+                    <th>Period End</th>
+                    <th>Hours Worked</th>
+                    <th>Gross Pay</th>
+                    <th>Net Pay</th>
+                    <th>Rate</th>
+                    <th>Taxes</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for paystub in employee_paystubs %}
+                    <tr>
+                        <td> {{ paystub.pay_period_start }} </td>
+                        <td> {{ paystub.pay_period_end }} </td>
+                        <td> {{ paystub.hours_worked }} </td>
+                        <td> {{ paystub.gross_pay }} </td>
+                        <td> {{ paystub.net_pay }} </td>
+                        <td> {{ paystub.rate }} </td>
+                        <td> {{ paystub.taxes }} </td>
+                    </tr>
+                {% endfor %} 
+            
+            </tbody>
+        </table>
+    </div>
+
+</form>
+
+
+{% endblock content %}
