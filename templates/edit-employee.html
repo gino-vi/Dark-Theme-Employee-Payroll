@@ -5,16 +5,9 @@
 <h1>Update: {{ object.last_name }}, {{ object.first_name}}</h1>
 <p></p>
 
+<a href="/view/{{ object.id_number }}" style="color: white;">View Employee Details</a>
 <form method="POST" id="updateEmployeeForm">
     {% csrf_token %}
-    <!--
-    <label for="activeBox">Active</label>
-    {% if object.active %}
-    <input name="active" id="activeBox" type="checkbox"  value="Active" checked /> 
-    {% else %}
-    <input name="active" id="activeBox" type="checkbox"  value="Inactive" unchecked /> 
-    {% endif%}
-    -->
     <label for="activeBox">Active<span style="color:red">*</span></label>
     <select name="active" id="activeBox">
         {% if object.active %}

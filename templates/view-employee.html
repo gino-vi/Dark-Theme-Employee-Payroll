@@ -4,37 +4,51 @@
 {% block content %}
 <h1>Viewing Employee: {{ object.last_name }}, {{ object.first_name}}</h1>
 <p></p>
+<a href="/edit/{{ object.id_number }}" style="color:white">Update</a>
+<a href="/paystubs/{{ object.id_number }}" style="color: white;">Paystubs</a>
 <form>
     {% csrf_token %}
     <div id="table">
         <table style="width:100%;">
             <thead>
                 <tr>
-                    <th>ID Number</th>
+                    <th>ID</th>
                     <th>First Name</th>
                     <th>Middle Name</th>
                     <th>Last Name</th>
-                    <th>E-mail</th>
-                    <th>Address</th>
-                    <th>Date of Birth</th>
-                    <th>Pay Rate</th>
-                    <th>Active?</th>
+                    <th>Active</th>
                 </tr>
             </thead>
             <tbody>
-
-                    <tr>
-                        <td> {{ object.id_number }} </td>
-                        <td> {{ object.first_name }} </td>
-                        <td> {{ object.middle_name }} </td>
-                        <td> {{ object.last_name }} </td>
-                        <td> {{ object.email }} </td>
-                        <td> {{ object.address }} </td>
-                        <td> {{ object.birth_date }} </td>
-                        <td> {{ object.pay_rate }} </td>
-                        <td> {{ object.active }} </td>
-                    </tr>
-
+                <tr>
+                    <td> {{ object.id_number }} </td>
+                    <td> {{ object.first_name }} </td>
+                    <td> {{ object.middle_name }} </td>
+                    <td> {{ object.last_name }} </td>
+                    {% if object.active %}
+                    <td> Yes </td>
+                    {% else %}
+                    <td> No </td>
+                    {% endif%}
+                </tr>
+            </tbody>
+        </table>
+        <table style="width:100%;">
+            <thead>
+                <tr>
+                    <th>Date of Birth</th>
+                    <th>E-mail</th>
+                    <th>Address</th>
+                    <th>Pay Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> {{ object.birth_date }} </td>
+                    <td> {{ object.email }} </td>
+                    <td> {{ object.address }} </td>
+                    <td> {{ object.pay_rate }} </td>
+                </tr>
             </tbody>
         </table>
     </div>
