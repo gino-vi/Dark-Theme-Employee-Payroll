@@ -3,20 +3,36 @@
     Form Layout Styles
 */
 
+.image-cropper {
+    width: 170px;
+    height: 170px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.profile-pic {
+  display: inline;
+  margin: 0 auto;
+  margin-left: -25%; //centers the image
+  height: 100%;
+  width: auto;
+}
+
 h2 {
   font-family: Arial, Helvetica, sans-serif;
   color: white;
-  font-size:18px;
+  font-size: 18px;
 }
 
 h3 {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto Mono', monospace;
   color: white;
-  font-size:18px;
+  font-size: 18px;
 }
 
 h3 span {
-  font-family: "Lucida Console", "Courier New", monospace;
+  font-family: 'Work Sans', sans-serif;
   margin-left: 18px;
   font-size:16px;
 }
@@ -70,7 +86,7 @@ input[type='submit'],input[type='reset'] {
 
 table, th, td {
    border: 2px solid black;
-   color: white; 
+   color: white;
    text-align: left;
    padding: 2px;
 

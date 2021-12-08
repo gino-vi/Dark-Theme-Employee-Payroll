@@ -202,6 +202,7 @@ def calculate_net(g, t):
     return net
 
 # **************************************************************************
+@login_required
 def view_paystubs_view(request,id=None):
     context={}
     employee_obj = None

@@ -6,18 +6,38 @@
 <p></p>
 <form>
     {% csrf_token %}
-    <h2>ID Number: <span>{{object.id_number}}</span> </h2>
-    <h2>First Name: <span>{{object.first_name}}</span></h2>
-    <h2>Middle Name: <span>{{object.middle_name}}</span></h2>
-    <h2>Last Name: <span>{{object.last_name}}</span></h2>
-    <h2>E-mail: <span>{{object.email}}</span></h2>
-    <h2>Address: <span>{{object.address}}</span></h2>
-    <h3>Date of Birth: <span>{{object.birth_date}}</span></h3>
-    <h2>Pay Rate: <span>{{object.pay_rate}}</span></h2>
-    <h2>Active?: <span>{{object.active}}</span></h2>
-    <h3>Photo: <span>Placeholder</span></h3> <!-- change this if we ever implement employee photos -->
+    <div id="table">
+        <table style="width:100%;">
+            <thead>
+                <tr>
+                    <th>ID Number</th>
+                    <th>First Name</th>
+                    <th>Middle Name</th>
+                    <th>Last Name</th>
+                    <th>E-mail</th>
+                    <th>Address</th>
+                    <th>Date of Birth</th>
+                    <th>Pay Rate</th>
+                    <th>Active?</th>
+                </tr>
+            </thead>
+            <tbody>
 
-    &nbsp;&nbsp;&nbsp;<a href="/edit/{{ object.id_number }}" style="color:white">Update</a>
-    &nbsp;&nbsp;&nbsp;<a href="/paystubs/{{ object.id_number }}" style="color: white;">Paystubs</a>
+                    <tr>
+                        <td> {{ object.id_number }} </td>
+                        <td> {{ object.first_name }} </td>
+                        <td> {{ object.middle_name }} </td>
+                        <td> {{ object.last_name }} </td>
+                        <td> {{ object.email }} </td>
+                        <td> {{ object.address }} </td>
+                        <td> {{ object.birth_date }} </td>
+                        <td> {{ object.pay_rate }} </td>
+                        <td> {{ object.active }} </td>
+                    </tr>
+
+            </tbody>
+        </table>
+    </div>
+
 </form>
 {% endblock content %}
