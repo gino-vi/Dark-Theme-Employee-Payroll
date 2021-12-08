@@ -1,30 +1,55 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+{% load static %}
 <h1>About Us</h1>
 <p></p>
 
 {% csrf_token %}
 <h3>
-  <div class="image-cropper"><img src="https://i.imgur.com/ihAEzDN.png" alt="Avatar" class="profile-pic"></div>  Alvaro Lopez-Romero</h3>
-    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Porta lorem mollis aliquam ut porttitor leo a diam sollicitudin.
-    Ullamcorper eget nulla facilisi etiam dignissim diam.</h2>
+  <div class="image-cropper">
+    <img src="{% static 'images/dt_alvaro_profile_pic.jpg' %}" alt="Avatar" class="profile-pic" />
+  </div>  Alvaro Lopez-Romero
+</h3>
+  <h2>Alvaro is a Computer Science major student at CSUN (Cal State Northridge). He works full-time as he completes his degree. 
+      On his free time he enjoys going on hikes, scenic drives, wine tasting and trying new restaurants.
+      <br/>
+      <a href="https://github.com/al-lopez247" target="_blank" style="color:white">GitHub</a> 
+  </h2>
 <p>
-    <h3>
-      <div class="image-cropper"><img src="https://i.imgur.com/wKLe2Cu.png" alt="Avatar" class="profile-pic"></div>  Gino Vitug</h3>
-    <h2>Gino is a Computer Science major at CSUN. His hobbies include music, video games, and mechanical keyboards. <a href="https://github.com/gino-vi">GitHub</a> and <a href="https://twitter.com/DeusExMekia">Twitter</a></h2>
+  <h3>
+    <div class="image-cropper">
+      <img src="https://i.imgur.com/wKLe2Cu.png" alt="Avatar" class="profile-pic">
+    </div>  Gino Vitug
+  </h3>
+  <h2>Gino is a Computer Science major at CSUN. His hobbies include music, video games, and mechanical keyboards. 
+    <br/>
+    <a href="https://github.com/gino-vi" target="_blank" style="color:white">GitHub</a> and 
+    <a href="https://twitter.com/DeusExMekia" target="_blank" style="color:white">Twitter</a>
+  </h2>
 </p>
 <p>
   <h3>
-    <div class="image-cropper"><img src="https://i.imgur.com/ihAEzDN.png" alt="Avatar" class="profile-pic"></div>  Josue Sanchez</h3>
-    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Porta lorem mollis aliquam ut porttitor leo a diam sollicitudin.
-    Ullamcorper eget nulla facilisi etiam dignissim diam.</h2>
+    <div class="image-cropper">
+      <img src="{% static 'images/dt_josue_profile_pic.png' %}" alt="Avatar" class="profile-pic">
+    </div>  Josue Sanchez
+  </h3>
+  <h2>Josue is computer science student at Cal State Northridge. He enjoys teaching and helping others. 
+    Most often, you can find him working, studying or fixing things around the house.
+    <br/>
+    <a href="https://github.com/jsanchez2388" target="_blank" style="color:white">GitHub</a>
+  </h2>
 </p>
 <p>
   <h3>
-    <div class="image-cropper"><img src="https://i.imgur.com/ihAEzDN.png" alt="Avatar" class="profile-pic"></div>  Kathleen Navarro</h3>
-    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Porta lorem mollis aliquam ut porttitor leo a diam sollicitudin.
-    Ullamcorper eget nulla facilisi etiam dignissim diam.</h2>
+    <div class="image-cropper">
+      <img src="{% static 'images/dt_kathleen_profile_pic.jpg' %}" alt="Avatar" class="profile-pic">
+    </div>  Kathleen Navarro
+  </h3>
+  <h2>Kathleen is a computer science student who spends her time studying, working, 
+    playing video games, going to Target, or sleeping.
+    <br/>
+    <a href="https://github.com/klnavarro" target="_blank" style="color:white">GitHub</a>
+  </h2>
 </p>
 {% endblock content %}
