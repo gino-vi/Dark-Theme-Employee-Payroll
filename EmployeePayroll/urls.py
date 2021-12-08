@@ -22,7 +22,8 @@ from persons.views import (
     edit_employee_view,
     view_employee_view,
     generate_paystub,
-    view_paystubs_view
+    view_paystubs_view,
+    about_view
 )
 from accounts.views import (
     login_view,
@@ -43,4 +44,5 @@ urlpatterns = [
     path('generate-pay', generate_paystub),
     path('view/<int:id>/', view_employee_view),
     path('paystubs/<int:id>/', view_paystubs_view),
+    path('about', about_view)
 ]

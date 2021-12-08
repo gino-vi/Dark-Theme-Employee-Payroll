@@ -6,6 +6,11 @@ from .models import Employee, Paystub
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+
+def about_view(request):
+    context = {}
+    return render(request,'about.html', context=context)
+
 # **************************************************************************
 @login_required
 def add_employee_view(request):
@@ -157,7 +162,7 @@ def generate_paystub(request):
         Paystub.objects.create(employee = emp, pay_period_start = pstart, pay_period_end = pend,
                                 hours_worked = hworked, rate = emp_rate, gross_pay = emp_gross,
                                 taxes = emp_tax, net_pay = emp_net)
-        
+
         employee_paystubs = Paystub.objects.filter(employee=emp).order_by('-pay_period_start')
         context = {
             "employee": emp,
@@ -209,8 +214,8 @@ def view_paystubs_view(request,id=None):
             context = {
                     "employee": employee_obj,
                     "employee_paystubs": employee_paystubs
-                }        
-    
+                }
+
 
     return render(request,'employee-paystubs-list.html', context=context)
 
