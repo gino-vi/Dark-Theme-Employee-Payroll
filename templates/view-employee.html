@@ -16,6 +16,7 @@
                     <th>First Name</th>
                     <th>Middle Name</th>
                     <th>Last Name</th>
+                    <th>Hire Date</th>
                     <th>Active</th>
                 </tr>
             </thead>
@@ -25,6 +26,7 @@
                     <td> {{ object.first_name }} </td>
                     <td> {{ object.middle_name }} </td>
                     <td> {{ object.last_name }} </td>
+                    <td> {{ object.date_hired }} </td>
                     {% if object.active %}
                     <td> Yes </td>
                     {% else %}
